@@ -1,0 +1,9 @@
+GET http://localhost:8080/api/user
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJza2oyQG5hdmVyLmNvbSIsIlVTRVJOQU1FIjoidGVzdGVyMDIiLCJVU0VSX1JPTEUiOiJST0xFX1VTRVIifQ.uKvNRJB2sOlz7AWy2m_nNkMTjRkm7YPUek4MncRFJWc
+
+###
+
+GET http://localhost:8080/api/hello
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBRE1JTiIsIlVTRVJOQU1FIjoic2tqQG5hdmVyLmNvbSIsIlVTRVJfUk9MRSI6IlJPTEVfQURNSU4ifQ.jjnN4R1rxhEzAXVc73BFYMNO9yrC8XH0yTYUFot_ckM
+
+###

@@ -1,0 +1,14 @@
+POST http://localhost:8080/social
+Content-Type: application/json
+
+{"provider":"KAKAO","token":"MOFo8kIHd_kpKf567xDpoDnBE6vquKaV8UqWZgopb9UAAAFx3kNEVQ"}
+
+###
+
+POST http://localhost:8080/social
+Content-Type: application/json
+
+{"provider":"NAVER","token":"MOFo8kIHd_kpKf567xDpoDnBE6vquKaV8UqWZgopb9UAAAFx3kNEVQ"}
+
+###
+
