@@ -1,6 +1,7 @@
 package com.dogvelopers.www.interfaces;
 
 import com.dogvelopers.www.model.network.Header;
+import org.springframework.web.bind.annotation.RequestBody;
 
 public interface CrudInterface<Req,Res> {
 

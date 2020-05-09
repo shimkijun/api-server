@@ -1,0 +1,26 @@
+POST http://localhost:8080/signup
+Content-Type: application/json
+
+{"userId": "skj5@naver.com","password": "1234","username": "skj"}
+
+### 회원가입
+
+POST http://localhost:8080/signin
+Content-Type: application/json
+
+{"userId": "skj2@naver.com","password": "1234"}
+
+### 로그인
+
+GET http://localhost:8080/api/user/1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJza2oyQG5hdmVyLmNvbSIsIlVTRVJOQU1FIjoic2tqIiwiVVNFUl9ST0xFIjoiUk9MRV9VU0VSIn0.iE204flOn7AB_hS1foJb3l3GZxzhyEOY2MFa196j8ug
+
+### 조회
+
+PUT http://localhost:8080/api/user
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJza2oyQG5hdmVyLmNvbSIsIlVTRVJOQU1FIjoic2tqIiwiVVNFUl9ST0xFIjoiUk9MRV9VU0VSIn0.iE204flOn7AB_hS1foJb3l3GZxzhyEOY2MFa196j8ug
+Content-Type: application/json
+
+{"userId": "skj2@naver.com","password": "3333","username": "gggg"}
+
+### 수정

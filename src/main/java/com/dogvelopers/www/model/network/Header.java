@@ -1,5 +1,6 @@
 package com.dogvelopers.www.model.network;
 
+import com.dogvelopers.www.model.network.response.AccountApiResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import javafx.scene.control.Pagination;
 import lombok.AllArgsConstructor;

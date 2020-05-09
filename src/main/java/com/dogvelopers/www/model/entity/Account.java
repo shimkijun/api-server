@@ -3,6 +3,7 @@ package com.dogvelopers.www.model.entity;
 import com.dogvelopers.www.enumclass.SocialProviders;
 import com.dogvelopers.www.enumclass.UserRole;
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -20,6 +21,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @EntityListeners(AuditingEntityListener.class)
+@Accessors(chain = true)
 public class Account {
 
     @Id
@@ -37,7 +39,6 @@ public class Account {
     @NonNull
     private String username;
 
-    @NonNull
     @Enumerated(value= EnumType.STRING)
     private UserRole userRole;
 

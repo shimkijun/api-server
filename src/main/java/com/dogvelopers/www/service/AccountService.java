@@ -7,17 +7,17 @@ import com.dogvelopers.www.model.network.Header;
 import com.dogvelopers.www.model.network.request.AccountApiRequest;
 import com.dogvelopers.www.model.network.response.AccountApiResponse;
 import com.dogvelopers.www.repository.AccountRepository;
+import com.dogvelopers.www.security.tokens.PostAuthorizationToken;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @Transactional
 public class AccountService implements CrudInterface<AccountApiRequest,AccountApiResponse>{
@@ -54,12 +54,29 @@ public class AccountService implements CrudInterface<AccountApiRequest,AccountAp
 
     @Override
     public Header<AccountApiResponse> read(Long id) {
-        return null;
+        return accountRepository.findById(id)
+                .map(user -> response(user))
+                .map(accountApiResponse -> Header.OK("OK",accountApiResponse))
+                .orElseGet(()->Header.ERROR("사용자가 존재하지 않습니다."));
     }
 
     @Override
-    public Header<AccountApiResponse> update(AccountApiRequest request) {
-        return null;
+    public Header<AccountApiResponse> update(AccountApiRequest accountApiRequest) {
+        // 1. id -> user 데이터 찾기
+        Optional<Account> getAccount = accountRepository.findByUserId(accountApiRequest.getUserId());
+        return getAccount.map(account ->{
+            log.error(accountApiRequest.getPassword());
+            String bcryptPassword = passwordEncoder.encode(accountApiRequest.getPassword());
+            // 2. update
+            account.setUserId(getAccount.get().getUserId())
+                    .setUsername(accountApiRequest.getUsername())
+                    .setPassword(bcryptPassword);
+            return account;
+        })
+        .map(account -> accountRepository.save(account))
+        .map(account -> response(account))
+        .map(accountApiResponse -> Header.OK("수정 되었습니다.",accountApiResponse))
+        .orElseGet(() -> Header.ERROR("수정 실패하였습니다"));
     }
 
     @Override

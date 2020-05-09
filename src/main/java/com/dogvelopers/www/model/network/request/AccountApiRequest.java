@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
 @Builder
 public class AccountApiRequest {
 
-    @JsonProperty("userId")
+    private Long id;
+
     private String userId;
 
-    @JsonProperty("password")
     private String password;
 
     private String username;
